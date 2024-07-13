@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+    <script src="https://unpkg.com/alpinejs" defer></script>
+
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="enoughairtime.js"></script><script src="enoughairtime-widget.js"></script>
+    <script src="enoughairtime-widget.js"></script>
+    <script src="totalphonebill.js"></script>
+    <script src="totalphonebill-widget.js"></script>
+    <script src="wordgame.js"></script>
+    <script src="wordgame-widget.js"></script>
+    <script src="greet.js"></script>
+    <script src="greet-widget.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <div class="container text-center text-bg-secondary p-3">
+        <h1> AlpineJS Bootcamp Widgets</h1>
+
+
+        <div class="widgets">
+
+
+            <div class="widget text-bg-light p-3" x-data="{name:'',
+        message:'',
+        greetMe(){
+
+            const greetingMessage = greet(this.name);
+            
+           this.message = greetingMessage;
+           setTimeout(() => {
+            this.message = '',
+            this.name = ''
+           }, 5000);}}">
+
+                <h2>Please greet me!</h2>
+
+                <div x-show="message.length > 0" class="message" x-text="message">
+
+                </div>
+                <div class="input">
+                    <label for="name">Enter username: </label>
+                    <input type="text" x-model="name" id="name">
+
+                </div>
+
+                <button x-on:click="greetMe">Greet!</button>
+            </div>
+
+            <div class="widget text-bg-light p-3" x-data="{ airtimeUsage : '',
+        availableAirtime : '',
+        airtimeMessage : '',
+        calculate() {
+            const amount = enoughAirtime(this.airtimeUsage, this.availableAirtime)
+            this.airtimeMessage = amount
+
+            setTimeout(() => {
+                this.airtimeMessage = '',
+                this.availableAirtime = '',
+                this.airtimeUsage = ''
+               }, 5000);
+
+        }}">
+
+                <h2>Enough Airtime</h2>
+
+                <div class="input">
+                    <label for="usage text-bg-light p-3">Usage: </label>
+                    <input type="text" x-model="airtimeUsage" id="usage">
+                </div>
+
+                <div class="input text-bg-light p-3">
+                    <label for="amount">Amount: </label>
+                    <input type="text" x-model="availableAirtime" id="amount">
+                </div>
+
+                <div x-show="airtimeMessage.length > 0" class="message" x-text="airtimeMessage">
+
+                </div>
+
+                <div>
+                    <button x-on:click="calculate()">Submit</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="widgets-2">
+            <div class="widget text-bg-light p-3" x-data="{statement : '',
+        billMessage : '',
+        calculateBill() {
+           this.billMessage = totalPhoneBill(this.statement);
+
+           setTimeout(() => {
+            this.billMessage = '',
+            this.statement = ''
+           }, 5000);
+        }}">
+
+                <h2>Total phone Bill Widget</h2>
+
+                <div class="input">
+                    <label for="bill">Usage: </label>
+                    <input type="text" x-model="statement" id="bill">
+                </div>
+
+                <div>
+                    <button x-on:click="calculateBill">Total bill</button>
+                </div>
+
+                <div x-show="billMessage.length > 0" class="message" x-text="billMessage">
+
+                </div>
+
+            </div>
+
+            <div class="widget text-bg-light p-3" x-data="{ sentence : '',
+        longWord : '',
+        shortWord : '',
+        sumOfLetters : 0,
+        solve() {
+            this.longWord = longestWord(this.sentence);
+            this.shortWord = shortestWord(this.sentence);
+            this.sumOfLetters = wordLengths(this.sentence);
+
+
+            setTimeout(() => {
+                this.sentence = '',
+                this.longWord = '',
+                this.shortWord = '',
+                this.sumOfLetters = 0
+               }, 5000);}}">
+
+                <h2>Word game Widget</h2>
+
+                <div class="input">
+                    <label for="words">Sentence: </label>
+                    <input type="text" x-model="sentence" id="words">
+                </div>
+
+                <div>
+                    <button x-on:click="solve()">Submit</button>
+                </div>
+
+                <span>Longest Word: </span>
+                <span x-show="longWord.length > 0" class="message" x-text="longWord">
+
+
+                </span>
+                <br>
+                <br>
+                <span>Shortest Word: </span>
+                <span x-show="shortWord.length > 0" class="message" x-text="shortWord">
+
+                </span>
+                <br>
+                <br>
+                <span>Count: </span>
+                <span class="message" x-text="sumOfLetters">
+
+                </span>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    </head>
+
+
+</body>
+
+</html>

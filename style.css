@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: orchid;
+}
+
+.message {
+    padding: 1em;
+    margin-bottom: 1em;
+}
+h1 {
+    text-align: center;
+    padding: 0.5em;
+}
+
+.input > label {
+    display: inline-block;
+    width: 15em;
+    padding: 0.5em;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.input > input[type="text"] {
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+.widget {
+    flex: 1;
+    border: 4px solid blueviolet;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
+vspan {
+    font-weight: bold;
+    font-family: cursive;
+}
+
+/* .widgets {
+    display: flex;
+}
+
+.widgets-2 {
+    display: flex;
+} */
